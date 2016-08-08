@@ -3,12 +3,13 @@
 ## Install
     pyvenv venv
     . venv/bin/activate
-    pip install -r requirements
+    pip install -r requirements.txt
 
 ## Usage
 
-Create a `config.py` with github and gitlab url and key. Use `config-example.py` as a template.
-run with `python lab2hub.py`.
+* Create a `config.py` with GitHub and GitLab url and key.
+* Use `config-example.py` as a template.
+* run with `python lab2hub.py`.
 
 
 ## TODO
