@@ -15,3 +15,4 @@
 ## TODO
 
 - On gitlab webhook, per repo
+- use with dedicated github org user
