@@ -23,7 +23,7 @@ except ImportError:
 
 
 def get_gitlab_repo_data(gl_api, group_id):
-    projects = list(filter(lambda x: x.public, gl_api.groups.get(group_id).projects))
+    projects = gl_api.groups.get(group_id).projects.list(visibility='public', all=True)
     repos = OrderedDict()
     for project in projects:
         name = project.http_url_to_repo.split('/')[-1].split('.')[0]
