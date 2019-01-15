@@ -51,7 +51,8 @@ class Lab2Hub:
 
             repos[name] = {
                 'ssh_url': r.ssh_url,
-                'name': name
+                'name': name,
+                'archived': r.archived
             }
         return repos
 
@@ -104,6 +105,9 @@ class Lab2Hub:
                 gh_repo = self.create_github_repository(name)
             else:
                 gh_repo = gh_repo_data[name]
+
+                if gh_repo['archived']:
+                    continue
 
             self.lab2hub(gl_repo, gh_repo)
             logger.info('[OK]: {}'.format(name))
