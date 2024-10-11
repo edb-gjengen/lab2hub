@@ -6,6 +6,7 @@ from collections import OrderedDict
 import git
 from dotenv import load_dotenv
 from github3 import login
+from github3 import exceptions as gh_exceptions
 from gitlab import Gitlab
 
 BASE_DIR = os.path.dirname(__file__)
@@ -103,7 +104,11 @@ class Lab2Hub:
         for name, gl_repo in gl_repo_data.items():
             if name not in gh_repo_data:
                 logger.info("[NEW]: {}".format(name))
-                gh_repo = self.create_github_repository(name)
+                try:
+                    gh_repo = self.create_github_repository(name)
+                except gh_exceptions.UnprocessableEntity as e:
+                    logger.error(f"Error creating repo {name} - {e}")
+                    continue
             else:
                 gh_repo = gh_repo_data[name]
 
