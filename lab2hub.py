@@ -2,7 +2,6 @@ import logging
 import os
 from argparse import ArgumentParser
 from collections import OrderedDict
-from typing import TypedDict
 
 import git
 from dotenv import load_dotenv
